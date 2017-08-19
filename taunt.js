@@ -32,13 +32,13 @@ function event::onChannelText(prefix, channel, text)
     // !mute‚Æ!nomute‚Å–Â‚ç‚·‚©‚ğŠÇ—
     // IRC‚Ìaway‹@”\‚ğg‚í‚¹‚Ä’¸‚­
     if ((ret = text.match(/^\!mute$/)) != null
-        && !myAwayStatus) {
+        && !myAwayStatus && prefix.nick == myNick) {
         away("Mute!");
         return;
     }
     
     if ((ret = text.match(/^\!nomute$/)) != null
-        && myAwayStatus) {
+        && myAwayStatus && prefix.nick == myNick) {
         away();
         return;
     }
